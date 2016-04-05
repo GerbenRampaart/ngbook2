@@ -4,17 +4,33 @@
     <head>
         <title>Angular 2 - Simple Reddit</title>
 
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
         <script src="node_modules/es6-shim/es6-shim.js"></script>
         <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-        <script src="node_modules/systemjs/dist/system.src.js"></script>
         <script src="node_modules/rxjs/bundles/Rx.js"></script>
-        <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
-        <link type="text/css" rel="stylesheet" href="semantic/semantic.css"/>
+        <link type="text/css" rel="stylesheet" href="node_modules/semantic-ui/dist/semantic.css"/>
         <link type="text/css" rel="stylesheet" href="styles.css"/>
 
     </head>
     <body>
 
+        <script type="text/javascript">
+        
+            System.config({
+               packages: {
+                   app: {
+                       format: 'register',
+                       defaultExtension: 'js'
+                   }
+               } 
+            });
+            
+            System.import('app.js')
+                .then(null, console.error.bind(console));
+        </script>
+
+        <hello-world></hello-world>
     </body>
 </html>
