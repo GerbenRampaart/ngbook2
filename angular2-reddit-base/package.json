@@ -1,15 +1,17 @@
 {
     "name": "ngbook2",
-    "version": "1.0",
+    "version": "1.0.0",
+    "private": true,
     "dependencies": {
         "systemjs": "^0.19.25",
         "es6-shim": "^0.35.0",
         "angular2-polyfill": "^0.0.21",
         "angular2": "^2.0.0-beta.13",
-        "rx": "^4.1.0",
+        "rxjs": "^5.0.0-beta.5",
         "semantic-ui": "^2.1.8"
     },
     "devDependencies": {
-        "gulp": "^3.9.1"
+        "gulp": "^3.9.1",
+        "gulp-util": "^3.0.7"
     }
 }
