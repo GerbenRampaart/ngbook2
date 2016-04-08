@@ -30,8 +30,9 @@
                } 
             });
             
-            System.import('app.js')
+            System.import('app/appcomponent.js')
                 .then(null, console.error.bind(console));
+                
         </script>
 
 
@@ -51,7 +52,7 @@
         </div>
 
         <div class="ui main text container">
-            <reddit></reddit> <!-- <--- Our app loads here! -->
+            <app></app>
         </div>
 
     </body>

@@ -10,7 +10,8 @@
     "noImplicitAny": false
   },
   "files": [
-    "app.ts",
+    "app/AppComponent.ts",
+    "app/ArticleComponent.ts",
     "node_modules/angular2/ts/typings/node/node.d.ts",
     "node_modules/angular2/typings/browser.d.ts"
   ],

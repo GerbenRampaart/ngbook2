@@ -6,7 +6,7 @@
         "clean": "rm -f ./*.js; rm -f ./*.js.map; rm -f ./intermediates/*.js; rm -f ./intermediates/*.js.map",
         "tsc": "./node_modules/.bin/tsc",
         "tsc:w": "./node_modules/.bin/tsc -w",
-        "serve": "./node_modules/.bin/live-server --host=localhost --port=8081 .",
+        "serve": "./node_modules/.bin/live-server --host=localhost --port=8088 .",
         "go": "concurrent \"npm run tsc:w\" \"npm run serve\" "
     },
     "dependencies": {
