@@ -5,13 +5,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * An error thrown when an action is invalid because the object has been
- * unsubscribed.
- *
- * @see {@link Subject}
- * @see {@link BehaviorSubject}
- *
- * @class ObjectUnsubscribedError
+ * an error thrown when an action is invalid because the object
+ * has been unsubscribed
  */
 var ObjectUnsubscribedError = (function (_super) {
     __extends(ObjectUnsubscribedError, _super);

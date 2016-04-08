@@ -1,6 +1,1 @@
-import { SwitchSignature } from '../../operator/switch';
-declare module '../../Observable' {
-    interface Observable<T> {
-        switch: SwitchSignature<T>;
-    }
-}
+export declare var _void: void;

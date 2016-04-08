@@ -1,6 +1,1 @@
-import { DematerializeSignature } from '../../operator/dematerialize';
-declare module '../../Observable' {
-    interface Observable<T> {
-        dematerialize: DematerializeSignature<T>;
-    }
-}
+export declare var _void: void;

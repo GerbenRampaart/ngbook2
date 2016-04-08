@@ -1,6 +1,1 @@
-import { ElementAtSignature } from '../../operator/elementAt';
-declare module '../../Observable' {
-    interface Observable<T> {
-        elementAt: ElementAtSignature<T>;
-    }
-}
+export declare var _void: void;

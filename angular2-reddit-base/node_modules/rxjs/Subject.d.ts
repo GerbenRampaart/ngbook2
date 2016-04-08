@@ -2,11 +2,8 @@ import { Operator } from './Operator';
 import { Observer } from './Observer';
 import { Observable } from './Observable';
 import { Subscriber } from './Subscriber';
-import { Subscription, ISubscription, TeardownLogic } from './Subscription';
-/**
- * @class Subject<T>
- */
-export declare class Subject<T> extends Observable<T> implements Observer<T>, ISubscription {
+import { Subscription } from './Subscription';
+export declare class Subject<T> extends Observable<T> implements Observer<T>, Subscription {
     protected destination: Observer<T>;
     protected source: Observable<T>;
     static create: Function;
@@ -19,10 +16,10 @@ export declare class Subject<T> extends Observable<T> implements Observer<T>, IS
     protected dispatching: boolean;
     protected hasCompleted: boolean;
     lift<T, R>(operator: Operator<T, R>): Observable<T>;
-    add(subscription: TeardownLogic): Subscription;
+    add(subscription: Subscription | Function | void): void;
     remove(subscription: Subscription): void;
     unsubscribe(): void;
-    protected _subscribe(subscriber: Subscriber<T>): TeardownLogic;
+    protected _subscribe(subscriber: Subscriber<T>): Subscription | Function | void;
     protected _unsubscribe(): void;
     next(value: T): void;
     error(err?: any): void;

@@ -1,6 +1,1 @@
-import { empty as staticEmpty } from '../../observable/empty';
-declare module '../../Observable' {
-    namespace Observable {
-        let empty: typeof staticEmpty;
-    }
-}
+export declare var _void: void;

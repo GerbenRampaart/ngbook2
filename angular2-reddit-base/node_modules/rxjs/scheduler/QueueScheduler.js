@@ -4,7 +4,7 @@ var FutureAction_1 = require('./FutureAction');
 var QueueScheduler = (function () {
     function QueueScheduler() {
         this.active = false;
-        this.actions = []; // XXX: use `any` to remove type param `T` from `VirtualTimeScheduler`.
+        this.actions = [];
         this.scheduledId = null;
     }
     QueueScheduler.prototype.now = function () {
@@ -16,13 +16,8 @@ var QueueScheduler = (function () {
         }
         this.active = true;
         var actions = this.actions;
-        // XXX: use `any` to remove type param `T` from `VirtualTimeScheduler`.
-        for (var action = null; action = actions.shift();) {
+        for (var action = void 0; action = actions.shift();) {
             action.execute();
-            if (action.error) {
-                this.active = false;
-                throw action.error;
-            }
         }
         this.active = false;
     };

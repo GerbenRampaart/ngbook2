@@ -1,6 +1,1 @@
-import { SwitchFirstSignature } from '../../operator/exhaust';
-declare module '../../Observable' {
-    interface Observable<T> {
-        exhaust: SwitchFirstSignature<T>;
-    }
-}
+export declare var _void: void;

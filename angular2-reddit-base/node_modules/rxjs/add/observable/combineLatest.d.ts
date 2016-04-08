@@ -1,6 +1,1 @@
-import { combineLatestStatic } from '../../operator/combineLatest';
-declare module '../../Observable' {
-    namespace Observable {
-        let combineLatest: typeof combineLatestStatic;
-    }
-}
+export declare var _void: void;

@@ -9,15 +9,10 @@ var Subscriber_1 = require('../../Subscriber');
 var Observable_1 = require('../../Observable');
 var Subscription_1 = require('../../Subscription');
 var root_1 = require('../../util/root');
-var ReplaySubject_1 = require('../../ReplaySubject');
+var ReplaySubject_1 = require('../../subject/ReplaySubject');
 var tryCatch_1 = require('../../util/tryCatch');
 var errorObject_1 = require('../../util/errorObject');
 var assign_1 = require('../../util/assign');
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
 var WebSocketSubject = (function (_super) {
     __extends(WebSocketSubject, _super);
     function WebSocketSubject(urlConfigOrSource, destination) {
@@ -43,13 +38,6 @@ var WebSocketSubject = (function (_super) {
     WebSocketSubject.prototype.resultSelector = function (e) {
         return JSON.parse(e.data);
     };
-    /**
-     * @param urlConfigOrSource
-     * @return {WebSocketSubject}
-     * @static true
-     * @name webSocket
-     * @owner Observable
-     */
     WebSocketSubject.create = function (urlConfigOrSource) {
         return new WebSocketSubject(urlConfigOrSource);
     };

@@ -2,12 +2,7 @@ import { Observable } from '../Observable';
 import { Subscriber } from '../Subscriber';
 import { Subscription } from '../Subscription';
 import { Scheduler } from '../Scheduler';
-import { AsyncSubject } from '../AsyncSubject';
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
+import { AsyncSubject } from '../subject/AsyncSubject';
 export declare class BoundNodeCallbackObservable<T> extends Observable<T> {
     private callbackFunc;
     private selector;

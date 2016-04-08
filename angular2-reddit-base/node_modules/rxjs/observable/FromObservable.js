@@ -12,16 +12,10 @@ var PromiseObservable_1 = require('./PromiseObservable');
 var IteratorObservable_1 = require('./IteratorObservable');
 var ArrayObservable_1 = require('./ArrayObservable');
 var ArrayLikeObservable_1 = require('./ArrayLikeObservable');
-var observable_1 = require('../symbol/observable');
-var iterator_1 = require('../symbol/iterator');
+var SymbolShim_1 = require('../util/SymbolShim');
 var Observable_1 = require('../Observable');
 var observeOn_1 = require('../operator/observeOn');
 var isArrayLike = (function (x) { return x && typeof x.length === 'number'; });
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
 var FromObservable = (function (_super) {
     __extends(FromObservable, _super);
     function FromObservable(ish, scheduler) {
@@ -40,7 +34,7 @@ var FromObservable = (function (_super) {
             scheduler = mapFnOrScheduler;
         }
         if (ish != null) {
-            if (typeof ish[observable_1.$$observable] === 'function') {
+            if (typeof ish[SymbolShim_1.SymbolShim.observable] === 'function') {
                 if (ish instanceof Observable_1.Observable && !scheduler) {
                     return ish;
                 }
@@ -52,7 +46,7 @@ var FromObservable = (function (_super) {
             else if (isPromise_1.isPromise(ish)) {
                 return new PromiseObservable_1.PromiseObservable(ish, scheduler);
             }
-            else if (typeof ish[iterator_1.$$iterator] === 'function' || typeof ish === 'string') {
+            else if (typeof ish[SymbolShim_1.SymbolShim.iterator] === 'function' || typeof ish === 'string') {
                 return new IteratorObservable_1.IteratorObservable(ish, null, null, scheduler);
             }
             else if (isArrayLike(ish)) {
@@ -65,10 +59,10 @@ var FromObservable = (function (_super) {
         var ish = this.ish;
         var scheduler = this.scheduler;
         if (scheduler == null) {
-            return ish[observable_1.$$observable]().subscribe(subscriber);
+            return ish[SymbolShim_1.SymbolShim.observable]().subscribe(subscriber);
         }
         else {
-            return ish[observable_1.$$observable]().subscribe(new observeOn_1.ObserveOnSubscriber(subscriber, scheduler, 0));
+            return ish[SymbolShim_1.SymbolShim.observable]().subscribe(new observeOn_1.ObserveOnSubscriber(subscriber, scheduler, 0));
         }
     };
     return FromObservable;

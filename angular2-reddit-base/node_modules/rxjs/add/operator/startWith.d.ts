@@ -1,6 +1,1 @@
-import { StartWithSignature } from '../../operator/startWith';
-declare module '../../Observable' {
-    interface Observable<T> {
-        startWith: StartWithSignature<T>;
-    }
-}
+export declare var _void: void;

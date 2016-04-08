@@ -11,10 +11,8 @@ var isScheduler_1 = require('../util/isScheduler');
  * <img src="./img/startWith.png" width="100%">
  *
  * @param {Values} an Iterable that contains the items you want the modified Observable to emit first.
- * @return {Observable} an Observable that emits the items in the specified Iterable and then emits the items
+ * @returns {Observable} an Observable that emits the items in the specified Iterable and then emits the items
  * emitted by the source Observable.
- * @method startWith
- * @owner Observable
  */
 function startWith() {
     var array = [];

@@ -1,5 +1,5 @@
 "use strict";
 var Observable_1 = require('../../Observable');
-var from_1 = require('../../observable/from');
-Observable_1.Observable.from = from_1.from;
+var FromObservable_1 = require('../../observable/FromObservable');
+Observable_1.Observable.from = FromObservable_1.FromObservable.create;
 //# sourceMappingURL=from.js.map

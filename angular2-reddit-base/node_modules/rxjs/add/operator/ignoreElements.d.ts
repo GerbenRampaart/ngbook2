@@ -1,6 +1,1 @@
-import { IgnoreElementsSignature } from '../../operator/ignoreElements';
-declare module '../../Observable' {
-    interface Observable<T> {
-        ignoreElements: IgnoreElementsSignature<T>;
-    }
-}
+export declare var _void: void;

@@ -14,10 +14,8 @@ var subscribeToResult_1 = require('../util/subscribeToResult');
  * <img src="./img/sample.png" width="100%">
  *
  * @param {Observable} sampler - the Observable to use for sampling the source Observable.
- * @return {Observable<T>} an Observable that emits the results of sampling the items emitted by this Observable
+ * @returns {Observable<T>} an Observable that emits the results of sampling the items emitted by this Observable
  * whenever the sampler Observable emits an item or completes.
- * @method sample
- * @owner Observable
  */
 function sample(notifier) {
     return this.lift(new SampleOperator(notifier));
@@ -27,16 +25,11 @@ var SampleOperator = (function () {
     function SampleOperator(notifier) {
         this.notifier = notifier;
     }
-    SampleOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new SampleSubscriber(subscriber, this.notifier));
+    SampleOperator.prototype.call = function (subscriber) {
+        return new SampleSubscriber(subscriber, this.notifier);
     };
     return SampleOperator;
 }());
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 var SampleSubscriber = (function (_super) {
     __extends(SampleSubscriber, _super);
     function SampleSubscriber(destination, notifier) {

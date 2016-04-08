@@ -1,12 +1,6 @@
 import { Observable, ObservableInput } from '../Observable';
 import { Operator } from '../Operator';
 import { Subscriber } from '../Subscriber';
-/**
- * @param observables
- * @return {Observable<R>}
- * @method zip
- * @owner Observable
- */
 export declare function zipProto<R>(...observables: Array<ObservableInput<any> | ((...values: Array<any>) => R)>): Observable<R>;
 export interface ZipSignature<T> {
     <R>(project: (v1: T) => R): Observable<R>;
@@ -42,13 +36,8 @@ export declare function zipStatic<R>(array: ObservableInput<any>[], project: (..
 export declare class ZipOperator<T, R> implements Operator<T, R> {
     project: (...values: Array<any>) => R;
     constructor(project?: (...values: Array<any>) => R);
-    call(subscriber: Subscriber<R>, source: any): any;
+    call(subscriber: Subscriber<R>): Subscriber<T>;
 }
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 export declare class ZipSubscriber<T, R> extends Subscriber<T> {
     private index;
     private values;

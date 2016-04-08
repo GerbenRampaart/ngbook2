@@ -7,12 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Subscriber_1 = require('../Subscriber');
 /**
  * Returns an Observable that transforms Notification objects into the items or notifications they represent.
- *
- * @see {@link Notification}
- *
- * @return {Observable} an Observable that emits items and notifications embedded in Notification objects emitted by the source Observable.
- * @method dematerialize
- * @owner Observable
+ * @returns {Observable} an Observable that emits items and notifications embedded in Notification objects emitted by the source Observable.
  */
 function dematerialize() {
     return this.lift(new DeMaterializeOperator());
@@ -21,16 +16,11 @@ exports.dematerialize = dematerialize;
 var DeMaterializeOperator = (function () {
     function DeMaterializeOperator() {
     }
-    DeMaterializeOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new DeMaterializeSubscriber(subscriber));
+    DeMaterializeOperator.prototype.call = function (subscriber) {
+        return new DeMaterializeSubscriber(subscriber);
     };
     return DeMaterializeOperator;
 }());
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 var DeMaterializeSubscriber = (function (_super) {
     __extends(DeMaterializeSubscriber, _super);
     function DeMaterializeSubscriber(destination) {

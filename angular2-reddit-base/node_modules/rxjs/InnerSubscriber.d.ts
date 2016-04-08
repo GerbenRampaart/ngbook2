@@ -1,10 +1,5 @@
 import { Subscriber } from './Subscriber';
 import { OuterSubscriber } from './OuterSubscriber';
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 export declare class InnerSubscriber<T, R> extends Subscriber<R> {
     private parent;
     private outerValue;

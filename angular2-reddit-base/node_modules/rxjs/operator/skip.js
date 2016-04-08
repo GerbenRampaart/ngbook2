@@ -11,10 +11,8 @@ var Subscriber_1 = require('../Subscriber');
  * <img src="./img/skip.png" width="100%">
  *
  * @param {Number} the `n` of times, items emitted by source Observable should be skipped.
- * @return {Observable} an Observable that skips values emitted by the source Observable.
+ * @returns {Observable} an Observable that skips values emitted by the source Observable.
  *
- * @method skip
- * @owner Observable
  */
 function skip(total) {
     return this.lift(new SkipOperator(total));
@@ -24,16 +22,11 @@ var SkipOperator = (function () {
     function SkipOperator(total) {
         this.total = total;
     }
-    SkipOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new SkipSubscriber(subscriber, this.total));
+    SkipOperator.prototype.call = function (subscriber) {
+        return new SkipSubscriber(subscriber, this.total);
     };
     return SkipOperator;
 }());
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 var SkipSubscriber = (function (_super) {
     __extends(SkipSubscriber, _super);
     function SkipSubscriber(destination, total) {

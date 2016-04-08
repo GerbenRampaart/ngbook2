@@ -7,11 +7,6 @@ import { Observable } from '../Observable';
  *
  * @param {Function} optional comparer function that it will use instead of its default to compare the value of two
  * items.
- * @return {Observable} an Observable that emits item with the largest number.
- * @method max
- * @owner Observable
+ * @returns {Observable} an Observable that emits item with the largest number.
  */
-export declare function max<T>(comparer?: (x: T, y: T) => T): Observable<T>;
-export interface MaxSignature<T> {
-    (comparer?: (x: T, y: T) => T): Observable<T>;
-}
+export declare function max<T>(comparer?: (value1: T, value2: T) => T): Observable<T>;

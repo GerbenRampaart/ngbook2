@@ -5,57 +5,22 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = require('../Observable');
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @extends {Ignored}
- * @hide true
- */
 var RangeObservable = (function (_super) {
     __extends(RangeObservable, _super);
-    function RangeObservable(start, count, scheduler) {
+    function RangeObservable(start, end, scheduler) {
         _super.call(this);
         this.start = start;
-        this._count = count;
+        this.end = end;
         this.scheduler = scheduler;
     }
-    /**
-     * Creates an Observable that emits a sequence of numbers within a specified
-     * range.
-     *
-     * <span class="informal">Emits a sequence of numbers in a range.</span>
-     *
-     * <img src="./img/range.png" width="100%">
-     *
-     * `range` operator emits a range of sequential integers, in order, where you
-     * select the `start` of the range and its `length`. By default, uses no
-     * Scheduler and just delivers the notifications synchronously, but may use
-     * an optional Scheduler to regulate those deliveries.
-     *
-     * @example <caption>Emits the numbers 1 to 10</caption>
-     * var numbers = Rx.Observable.range(1, 10);
-     * numbers.subscribe(x => console.log(x));
-     *
-     * @see {@link timer}
-     * @see {@link interval}
-     *
-     * @param {number} [start=0] The value of the first integer in the sequence.
-     * @param {number} [count=0] The number of sequential integers to generate.
-     * @param {Scheduler} [scheduler] A {@link Scheduler} to use for scheduling
-     * the emissions of the notifications.
-     * @return {Observable} An Observable of numbers that emits a finite range of
-     * sequential integers.
-     * @static true
-     * @name range
-     * @owner Observable
-     */
-    RangeObservable.create = function (start, count, scheduler) {
+    RangeObservable.create = function (start, end, scheduler) {
         if (start === void 0) { start = 0; }
-        if (count === void 0) { count = 0; }
-        return new RangeObservable(start, count, scheduler);
+        if (end === void 0) { end = 0; }
+        return new RangeObservable(start, end, scheduler);
     };
     RangeObservable.dispatch = function (state) {
-        var start = state.start, index = state.index, count = state.count, subscriber = state.subscriber;
-        if (index >= count) {
+        var start = state.start, index = state.index, end = state.end, subscriber = state.subscriber;
+        if (index >= end) {
             subscriber.complete();
             return;
         }
@@ -70,16 +35,16 @@ var RangeObservable = (function (_super) {
     RangeObservable.prototype._subscribe = function (subscriber) {
         var index = 0;
         var start = this.start;
-        var count = this._count;
+        var end = this.end;
         var scheduler = this.scheduler;
         if (scheduler) {
             return scheduler.schedule(RangeObservable.dispatch, 0, {
-                index: index, count: count, start: start, subscriber: subscriber
+                index: index, end: end, start: start, subscriber: subscriber
             });
         }
         else {
             do {
-                if (index++ >= count) {
+                if (index++ >= end) {
                     subscriber.complete();
                     break;
                 }

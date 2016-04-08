@@ -1,6 +1,1 @@
-import { zip as zipStatic } from '../../observable/zip';
-declare module '../../Observable' {
-    namespace Observable {
-        let zip: typeof zipStatic;
-    }
-}
+export declare var _void: void;

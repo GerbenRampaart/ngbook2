@@ -1,5 +1,5 @@
 "use strict";
 var Observable_1 = require('../../Observable');
-var bindNodeCallback_1 = require('../../observable/bindNodeCallback');
-Observable_1.Observable.bindNodeCallback = bindNodeCallback_1.bindNodeCallback;
+var BoundNodeCallbackObservable_1 = require('../../observable/BoundNodeCallbackObservable');
+Observable_1.Observable.bindNodeCallback = BoundNodeCallbackObservable_1.BoundNodeCallbackObservable.create;
 //# sourceMappingURL=bindNodeCallback.js.map

@@ -4,11 +4,6 @@ import { Observable } from '../Observable';
  *
  * <img src="./img/isEmpty.png" width="100%">
  *
- * @return {Observable} an Observable that emits a Boolean.
- * @method isEmpty
- * @owner Observable
+ * @returns {Observable} an Observable that emits a Boolean.
  */
 export declare function isEmpty(): Observable<boolean>;
-export interface IsEmptySignature<T> {
-    (): Observable<boolean>;
-}

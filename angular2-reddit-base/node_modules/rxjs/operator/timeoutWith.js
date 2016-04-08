@@ -4,20 +4,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var async_1 = require('../scheduler/async');
+var asap_1 = require('../scheduler/asap');
 var isDate_1 = require('../util/isDate');
 var OuterSubscriber_1 = require('../OuterSubscriber');
 var subscribeToResult_1 = require('../util/subscribeToResult');
-/**
- * @param due
- * @param withObservable
- * @param scheduler
- * @return {Observable<R>|WebSocketSubject<T>|Observable<T>}
- * @method timeoutWith
- * @owner Observable
- */
 function timeoutWith(due, withObservable, scheduler) {
-    if (scheduler === void 0) { scheduler = async_1.async; }
+    if (scheduler === void 0) { scheduler = asap_1.asap; }
     var absoluteTimeout = isDate_1.isDate(due);
     var waitFor = absoluteTimeout ? (+due - scheduler.now()) : Math.abs(due);
     return this.lift(new TimeoutWithOperator(waitFor, absoluteTimeout, withObservable, scheduler));
@@ -30,16 +22,11 @@ var TimeoutWithOperator = (function () {
         this.withObservable = withObservable;
         this.scheduler = scheduler;
     }
-    TimeoutWithOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new TimeoutWithSubscriber(subscriber, this.absoluteTimeout, this.waitFor, this.withObservable, this.scheduler));
+    TimeoutWithOperator.prototype.call = function (subscriber) {
+        return new TimeoutWithSubscriber(subscriber, this.absoluteTimeout, this.waitFor, this.withObservable, this.scheduler);
     };
     return TimeoutWithOperator;
 }());
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 var TimeoutWithSubscriber = (function (_super) {
     __extends(TimeoutWithSubscriber, _super);
     function TimeoutWithSubscriber(destination, absoluteTimeout, waitFor, withObservable, scheduler) {

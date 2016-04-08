@@ -1,6 +1,1 @@
-import { BufferToggleSignature } from '../../operator/bufferToggle';
-declare module '../../Observable' {
-    interface Observable<T> {
-        bufferToggle: BufferToggleSignature<T>;
-    }
-}
+export declare var _void: void;

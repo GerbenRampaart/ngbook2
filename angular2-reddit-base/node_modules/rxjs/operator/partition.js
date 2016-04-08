@@ -1,13 +1,6 @@
 "use strict";
 var not_1 = require('../util/not');
 var filter_1 = require('./filter');
-/**
- * @param predicate
- * @param thisArg
- * @return {Observable<T>[]}
- * @method partition
- * @owner Observable
- */
 function partition(predicate, thisArg) {
     return [
         filter_1.filter.call(this, predicate),

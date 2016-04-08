@@ -5,11 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var FutureAction_1 = require('./FutureAction');
-/**
- * We need this JSDoc comment for affecting ESDoc.
- * @ignore
- * @extends {Ignored}
- */
 var QueueAction = (function (_super) {
     __extends(QueueAction, _super);
     function QueueAction() {

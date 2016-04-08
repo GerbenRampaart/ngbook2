@@ -1,6 +1,1 @@
-import { MinSignature } from '../../operator/min';
-declare module '../../Observable' {
-    interface Observable<T> {
-        min: MinSignature<T>;
-    }
-}
+export declare var _void: void;
