@@ -1,7 +1,7 @@
 /// <reference path="../node_modules/angular2/ts/typings/node/node.d.ts"/>
 /// <reference path="../node_modules/angular2/typings/browser.d.ts"/>
 /// <reference path="./ArticleComponent.ts"/>
-System.register(["angular2/platform/browser", "angular2/core", "./ArticleComponent"], function(exports_1, context_1) {
+System.register(["angular2/platform/browser", "angular2/core", "./ArticleComponent", "./ArticleModel"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(["angular2/platform/browser", "angular2/core", "./ArticleCompone
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var browser_1, core_1, ArticleComponent_1;
+    var browser_1, core_1, ArticleComponent_1, ArticleModel_1;
     var AppComponent;
     return {
         setters:[
@@ -25,14 +25,17 @@ System.register(["angular2/platform/browser", "angular2/core", "./ArticleCompone
             },
             function (ArticleComponent_1_1) {
                 ArticleComponent_1 = ArticleComponent_1_1;
+            },
+            function (ArticleModel_1_1) {
+                ArticleModel_1 = ArticleModel_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                     this.articles = [
-                        new ArticleComponent_1.Article('Angular 2', 'http://angular.io'),
-                        new ArticleComponent_1.Article('Fullstack', 'http://fullstack.io'),
-                        new ArticleComponent_1.Article('Angular homepage', 'http://angular.io')
+                        new ArticleModel_1.ArticleModel('Angular 2', 'http://angular.io'),
+                        new ArticleModel_1.ArticleModel('Fullstack', 'http://fullstack.io'),
+                        new ArticleModel_1.ArticleModel('Angular homepage', 'http://angular.io')
                     ];
                 }
                 AppComponent.prototype.addArticle = function (title, link) {
@@ -40,10 +43,9 @@ System.register(["angular2/platform/browser", "angular2/core", "./ArticleCompone
                 };
                 AppComponent = __decorate([
                     core_1.Component({
-                        selector: 'app',
+                        selector: 'reddit',
                         directives: [ArticleComponent_1.ArticleComponent],
-                        providers: [ArticleComponent_1.Article],
-                        template: "\n        <form class=\"ui large form segment\">\n            <h3 class=\"header\">Add a link</h3>\n            <div class=\"field\">\n                <label for=\"title\">Title:</label>\n                <input name=\"title\" #newtitle />\n            </div>\n            <div class=\"field\">\n                <label for=\"link\">Link:</label>\n                <input name=\"link\" #newlink />\n            </div>\n            <button (click)=\"addArticle(newtitle, newlink)\"\n                class=\"ui positive right bloated button\">\n                Submit link\n            </button>\n        </form>\n        \n        <div class=\"ui grid posts\">\n            <article [article]=\"myArticle1\"></article>\n            <article [article]=\"myArticle2\"></article>\n            <article [article]=\"myArticle3\"></article>\n        </div>\n    "
+                        template: "\n        <form class=\"ui large form segment\">\n            <h3 class=\"header\">Add a link</h3>\n            <div class=\"field\">\n                <label for=\"title\">Title:</label>\n                <input name=\"title\" #newtitle />\n            </div>\n            <div class=\"field\">\n                <label for=\"link\">Link:</label>\n                <input name=\"link\" #newlink />\n            </div>\n            <button (click)=\"addArticle(newtitle, newlink)\"\n                class=\"ui positive right bloated button\">\n                Submit link\n            </button>\n        </form>\n        \n        <div class=\"ui grid posts\">\n            <reddit-article \n                *ngFor=\"#article of articles\"\n                [article]=\"article\">\n            </reddit-article>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

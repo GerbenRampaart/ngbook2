@@ -2,35 +2,16 @@
 /// <reference path="../node_modules/angular2/typings/browser.d.ts"/>
 
 import { bootstrap } from "angular2/platform/browser";
-import { Component, Injectable } from "angular2/core";
+import { Component } from "angular2/core";
 
-@Injectable()
-export class Article {
-    title: string;
-    link: string;
-    votes: number;
-    
-    constructor(title: string, link: string, votes?: number) {
-        this.title = title;
-        this.link = link;
-        this.votes = votes || 0;
-    }
-    
-    voteUp(): void {
-        this.votes += 1;
-    }
-    
-    voteDown(): void {
-        this.votes -= 1;
-    }
-}
+import { ArticleModel } from "./ArticleModel";
 
 @Component({
-    selector: 'article',
-    inputs: [ 'article' ],
+    selector: 'reddit-article',
     host: {
         class: 'row'
     },
+    inputs: [ 'article' ],
     template: `
         <div class="four wide column center aligned votes">
             <div class="ui statistic">
@@ -64,10 +45,9 @@ export class Article {
     `
 })
 export class ArticleComponent {
-    article: Article;
+    article: ArticleModel;
     
-    constructor(article: Article) {
-        this.article = article;
+    constructor() {
     }
     
     voteUp() : boolean {

@@ -4,12 +4,13 @@
 
 import { bootstrap } from "angular2/platform/browser";
 import { Component } from "angular2/core";
-import { ArticleComponent, Article } from "./ArticleComponent";
+
+import { ArticleComponent } from "./ArticleComponent";
+import { ArticleModel } from "./ArticleModel";
 
 @Component({
-    selector: 'app',
+    selector: 'reddit',
     directives: [ ArticleComponent ],
-    providers: [ Article ],
     template: `
         <form class="ui large form segment">
             <h3 class="header">Add a link</h3>
@@ -28,20 +29,21 @@ import { ArticleComponent, Article } from "./ArticleComponent";
         </form>
         
         <div class="ui grid posts">
-            <article [article]="myArticle1"></article>
-            <article [article]="myArticle2"></article>
-            <article [article]="myArticle3"></article>
+            <reddit-article 
+                *ngFor="#article of articles"
+                [article]="article">
+            </reddit-article>
         </div>
     `
 })
 class AppComponent {
-    articles: Article[]    
+    articles: ArticleModel[];
     
     constructor() {
         this.articles = [
-            new Article('Angular 2', 'http://angular.io'),
-            new Article('Fullstack', 'http://fullstack.io'),
-            new Article('Angular homepage', 'http://angular.io')
+            new ArticleModel('Angular 2', 'http://angular.io'),
+            new ArticleModel('Fullstack', 'http://fullstack.io'),
+            new ArticleModel('Angular homepage', 'http://angular.io')
         ];
     }
     
