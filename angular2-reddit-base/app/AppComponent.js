@@ -40,12 +40,18 @@ System.register(["angular2/platform/browser", "angular2/core", "./ArticleCompone
                 }
                 AppComponent.prototype.addArticle = function (title, link) {
                     console.log("Adding article title: " + title.value + " and link: " + link.value);
+                    this.articles.push(new ArticleModel_1.ArticleModel(title.value, link.value, 0));
+                    title.value = '';
+                    link.value = '';
+                };
+                AppComponent.prototype.sortedArticles = function () {
+                    return this.articles.sort(function (a, b) { return b.votes - a.votes; });
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'reddit',
                         directives: [ArticleComponent_1.ArticleComponent],
-                        template: "\n        <form class=\"ui large form segment\">\n            <h3 class=\"header\">Add a link</h3>\n            <div class=\"field\">\n                <label for=\"title\">Title:</label>\n                <input name=\"title\" #newtitle />\n            </div>\n            <div class=\"field\">\n                <label for=\"link\">Link:</label>\n                <input name=\"link\" #newlink />\n            </div>\n            <button (click)=\"addArticle(newtitle, newlink)\"\n                class=\"ui positive right bloated button\">\n                Submit link\n            </button>\n        </form>\n        \n        <div class=\"ui grid posts\">\n            <reddit-article \n                *ngFor=\"#article of articles\"\n                [article]=\"article\">\n            </reddit-article>\n        </div>\n    "
+                        template: "\n        <form class=\"ui large form segment\">\n            <h3 class=\"header\">Add a link</h3>\n            <div class=\"field\">\n                <label for=\"title\">Title:</label>\n                <input name=\"title\" #newtitle />\n            </div>\n            <div class=\"field\">\n                <label for=\"link\">Link:</label>\n                <input name=\"link\" #newlink />\n            </div>\n            <button (click)=\"addArticle(newtitle, newlink)\"\n                class=\"ui positive right bloated button\">\n                Submit link\n            </button>\n        </form>\n        \n        <div class=\"ui grid posts\">\n            <reddit-article \n                *ngFor=\"#article of sortedArticles()\"\n                [article]=\"article\">\n            </reddit-article>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

@@ -17,6 +17,15 @@ System.register([], function(exports_1, context_1) {
                 ArticleModel.prototype.voteDown = function () {
                     this.votes -= 1;
                 };
+                ArticleModel.prototype.domain = function () {
+                    try {
+                        var link = this.link.split('//')[1];
+                        return link.split('/')[0];
+                    }
+                    catch (err) {
+                        return null;
+                    }
+                };
                 return ArticleModel;
             }());
             exports_1("ArticleModel", ArticleModel);

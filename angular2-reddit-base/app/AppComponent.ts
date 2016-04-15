@@ -30,7 +30,7 @@ import { ArticleModel } from "./ArticleModel";
         
         <div class="ui grid posts">
             <reddit-article 
-                *ngFor="#article of articles"
+                *ngFor="#article of sortedArticles()"
                 [article]="article">
             </reddit-article>
         </div>
@@ -49,7 +49,15 @@ class AppComponent {
     
     addArticle(title: HTMLInputElement, link: HTMLInputElement) : void {
         console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+        
+        this.articles.push(new ArticleModel(title.value, link.value, 0));
+        title.value = '';
+        link.value = '';
     }
+    
+    sortedArticles() : ArticleModel[] {
+        return this.articles.sort((a: ArticleModel, b: ArticleModel) => b.votes - a.votes);
+    }    
 }
 
 bootstrap(AppComponent);
