@@ -1,4 +1,4 @@
-System.register(["angular2/core"], function(exports_1, context_1) {
+System.register(["angular2/core", "./productslist.component", "./product"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,36 @@ System.register(["angular2/core"], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, productslist_component_1, product_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (productslist_component_1_1) {
+                productslist_component_1 = productslist_component_1_1;
+            },
+            function (product_1_1) {
+                product_1 = product_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.products = [
+                        new product_1.Product('MYSHOES', 'Black Running Shoes', '/resources/images/products/black-shoes.jpg', ['Men', 'Shoes', 'Running Shoes'], 109.99),
+                        new product_1.Product('NEATOJACKET', 'Blue Jacket', '/resources/images/products/blue-jacket.jpg', ['Women', 'Apparel', 'Jackets & Vests'], 238.99),
+                        new product_1.Product('NICEHAT', 'A Nice Black Hat', '/resources/images/products/black-hat.jpg', ['Men', 'Accessories', 'Hats'], 29.99)
+                    ];
                 }
+                AppComponent.prototype.productWasSelected = function (product) {
+                    console.log('Product clicked: ' + product);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "product"
+                        directives: [productslist_component_1.ProductsListComponent],
+                        template: "\n        <div class=\"inventory-app\">\n            <products-list\n                [productList]=\"products\"\n                (onProductSelected)=\"productWasSelected($event)\">\n            </products-list>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
