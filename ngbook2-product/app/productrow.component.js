@@ -36,7 +36,7 @@ System.register(["angular2/core", "./productimage.component", "./pricedisplay.co
                         inputs: ['product'],
                         host: { 'class': 'item' },
                         directives: [productimage_component_1.ProductImageComponent, pricedisplay_component_1.PriceDisplayComponent, productdepartment_component_1.ProductDepartmentComponent],
-                        template: "\n        <product-image [product]=\"product\"><product-image>\n        <div class=\"content\">\n            <div class=\"header\">{{ product.name }}</div>\n            <div class=\"meta\">\n                <div class=\"product-sku\">SKU #{{ product.sku }}</div>\n            </div>\n            <div class=\"description\">\n                <product-department [product]=\"product\"></product-department>\n            </div>\n        </div>\n        <price-display [price]=\"product.price\"></price-display>\n    "
+                        template: "\n        <product-image [product]=\"product\"></product-image>\n        <div class=\"content\">\n            <div class=\"header\">{{ product.name }}</div>\n            <div class=\"meta\">\n                <div class=\"product-sku\">SKU #{{ product.sku }}</div>\n            </div>\n            <div class=\"description\">\n                <product-department [product]=\"product\"></product-department>\n            </div>\n        </div>\n        <price-display [price]=\"product.price\"></price-display>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ProductRowComponent);

@@ -27,9 +27,9 @@ System.register(["angular2/core", "./productslist.component", "./product"], func
             AppComponent = (function () {
                 function AppComponent() {
                     this.products = [
-                        new product_1.Product('MYSHOES', 'Black Running Shoes', '/resources/images/products/black-shoes.jpg', ['Men', 'Shoes', 'Running Shoes'], 109.99),
-                        new product_1.Product('NEATOJACKET', 'Blue Jacket', '/resources/images/products/blue-jacket.jpg', ['Women', 'Apparel', 'Jackets & Vests'], 238.99),
-                        new product_1.Product('NICEHAT', 'A Nice Black Hat', '/resources/images/products/black-hat.jpg', ['Men', 'Accessories', 'Hats'], 29.99)
+                        new product_1.Product('MYSHOES', 'Black Running Shoes', 'resources/images/products/black-shoes.jpg', ['Men', 'Shoes', 'Running Shoes'], 109.99),
+                        new product_1.Product('NEATOJACKET', 'Blue Jacket', 'resources/images/products/blue-jacket.jpg', ['Women', 'Apparel', 'Jackets & Vests'], 238.99),
+                        new product_1.Product('NICEHAT', 'A Nice Black Hat', 'resources/images/products/black-hat.jpg', ['Men', 'Accessories', 'Hats'], 29.99)
                     ];
                 }
                 AppComponent.prototype.productWasSelected = function (product) {

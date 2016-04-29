@@ -12,7 +12,7 @@ import { Product } from "./product";
     host: { 'class': 'item' },
     directives: [ ProductImageComponent, PriceDisplayComponent, ProductDepartmentComponent ],
     template: `
-        <product-image [product]="product"><product-image>
+        <product-image [product]="product"></product-image>
         <div class="content">
             <div class="header">{{ product.name }}</div>
             <div class="meta">
