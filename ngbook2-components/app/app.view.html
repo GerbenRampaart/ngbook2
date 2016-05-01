@@ -1,0 +1,35 @@
+<div class="ui button">
+    <button (click)="toggle()">toggle</button>
+</div>
+
+<div>number:</div>
+<div>{{ currentOption }}</div>
+
+<div>visible:</div>
+<div *ngIf="visible">hello</div>
+
+<div>visible:</div>
+<div *ngIf="!visible">hello</div>
+
+<div [ngSwitch]="currentOption">
+    <div *ngSwitchWhen="1">option is 1</div>
+    <div *ngSwitchWhen="2">option is 2</div>
+    <div *ngSwitchDefault>Something else</div>
+</div>
+
+<div [ngStyle]="{ 'color': 'white', 'background-color': 'blue' }">
+    white text, blue background
+</div>
+
+<div class="ui input">
+    <input type="text" name="color" value="{{ color }}" #colorinput/>
+</div>
+<div class="ui input">
+    <input type="text" name="fontSize" value="{{ fontSize }}" #fontinput/>
+</div>
+
+<div>
+    <span [ngStyle]="{ 'color': 'red' }" [style.font-size.px]="fontSize">
+        red text
+    </span>
+</div>

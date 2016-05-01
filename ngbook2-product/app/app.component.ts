@@ -9,8 +9,8 @@ import { Product } from "./product";
     template: `
         <div class="inventory-app">
             <products-list
-                [productList]="products"
-                (onProductSelected)="productWasSelected($event)">
+                data-bind-productList="products"
+                data-on-onProductSelected="productWasSelected($event)">
             </products-list>
         </div>
     `
