@@ -1,6 +1,5 @@
-<div class="ui button">
-    <button (click)="toggle()">toggle</button>
-</div>
+
+<button class="ui button" (click)="toggle()">toggle</button>
 
 <div>number:</div>
 <div>{{ currentOption }}</div>
@@ -39,3 +38,7 @@
         {{ colorinput.value }} text
     </span>
 </div>
+
+<button class="ui primary button" (click)="apply(colorinput.value, fontinput.value)">
+    Apply settings
+</button>

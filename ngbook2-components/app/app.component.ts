@@ -6,8 +6,8 @@ import { Component } from "angular2/core";
 })
 export class AppComponent {
     
-    colorinput: number;
-    fontsize: number;
+    color: string;
+    fontSize: number;
     
     visible: boolean;
     // options: Array<number>;
@@ -25,5 +25,10 @@ export class AppComponent {
         } else {
             this.currentOption++;
         }
+    }
+    
+    apply(color, fontSize) {
+        this.color = color;
+        this.fontSize = fontSize;
     }
 }

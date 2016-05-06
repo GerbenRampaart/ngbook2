@@ -33,6 +33,10 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                         this.currentOption++;
                     }
                 };
+                AppComponent.prototype.apply = function (color, fontSize) {
+                    this.color = color;
+                    this.fontSize = fontSize;
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
