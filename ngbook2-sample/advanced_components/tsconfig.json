@@ -5,20 +5,19 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": false,
+    "noEmitHelpers": true,
     "sourceMap": true
   },
-  "files": [
-    "node_modules/angular2/ts/typings/node/node.d.ts",
-    "node_modules/angular2/typings/browser.d.ts",
-    "./app/ts/app.ts",
-    "./app/ts/vendor.ts"
-  ],
   "filesGlob": [
     "./app/**/*.ts",
     "./test/**/*.ts",
     "!./node_modules/**/*.ts"
   ],
   "compileOnSave": false,
-  "buildOnSave": false
+  "buildOnSave": false,
+  "exclude": [
+    "typings/main.d.ts",
+    "typings/main",
+    "node_modules"
+  ]
 }

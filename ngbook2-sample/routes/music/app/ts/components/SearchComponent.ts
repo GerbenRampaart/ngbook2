@@ -2,13 +2,13 @@
  * Angular
  */
 
-import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {Component, OnInit} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
 import {
   Router,
   RouterLink,
   RouteParams,
-} from 'angular2/router';
+} from '@angular/router-deprecated';
 
 /*
  * Services
@@ -37,7 +37,7 @@ import {SpotifyService} from 'services/SpotifyService';
       <h1>Results</h1>
 
       <div class="row">
-        <div class="col-sm-6 col-md-4" *ngFor="#t of results">
+        <div class="col-sm-6 col-md-4" *ngFor="let t of results">
           <div class="thumbnail">
             <div class="content">
               <img src="{{ t.album.images[0].url }}" class="img-responsive">

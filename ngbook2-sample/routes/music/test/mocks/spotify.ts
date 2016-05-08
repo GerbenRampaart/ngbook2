@@ -1,5 +1,5 @@
-import {provide} from 'angular2/core';
-import {SpyObject} from 'angular2/testing_internal';
+import {provide} from '@angular/core';
+import {SpyObject} from './helper';
 
 import {SpotifyService} from '../../app/ts/services/SpotifyService';
 

@@ -4,13 +4,13 @@ import {
   describe,
   expect,
   inject,
-  injectAsync,
+  async,
   afterEach,
   beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
-import {Router} from "angular2/router";
-import {DebugElement} from 'angular2/src/core/debug/debug_node';
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {Router} from "@angular/router-deprecated";
+import {DebugElement} from '@angular/core/src/debug/debug_node';
 
 import {MockRouterProvider} from '../mocks/routes';
 import {MockSpotifyService} from '../mocks/spotify';
@@ -32,33 +32,33 @@ describe('SearchComponent', () => {
   });
 
   describe('initialization', () => {
-    it(`doesn't search for a track without a query`,
-      injectAsync([TestComponentBuilder], (tcb) => {
-        var search = mockSpotifyService.spy('searchTrack');
-        return tcb.createAsync(SearchComponent).then((fixture) => {
-          fixture.detectChanges();
-          expect(search).not.toHaveBeenCalled();
-        });
-      })
-    );
+    it(`doesn\'t search for a track without a query`,
+       async(inject([TestComponentBuilder], (tcb) => {
+         var search = mockSpotifyService.spy('searchTrack');
+         return tcb.createAsync(SearchComponent).then((fixture) => {
+           fixture.detectChanges();
+           expect(search).not.toHaveBeenCalled();
+         });
+       }))
+      );
 
     it('searches for a track if a query is provided',
-      injectAsync([TestComponentBuilder], (tcb) => {
-        var search = mockSpotifyService.spy('searchTrack');
-        mockRouterProvider.setRouteParam('query', 'QUERY');
+       async(inject([TestComponentBuilder], (tcb) => {
+         var search = mockSpotifyService.spy('searchTrack');
+         mockRouterProvider.setRouteParam('query', 'QUERY');
 
-        return tcb.createAsync(SearchComponent).then((rootTC) => {
-          rootTC.detectChanges();
-          expect(search).toHaveBeenCalled();
-        });
-      })
-    );
+         return tcb.createAsync(SearchComponent).then((rootTC) => {
+           rootTC.detectChanges();
+           expect(search).toHaveBeenCalled();
+         });
+       }))
+      );
   });
 
   describe('submit', () => {
     describe('testing the method', () => {
       it('navigates to the Search route',
-        injectAsync([TestComponentBuilder], (tcb) => {
+         async(inject([TestComponentBuilder], (tcb) => {
           var navigate = mockRouterProvider.mockRouter.spy('navigate');
 
           return tcb.createAsync(SearchComponent).then((fixture) => {
@@ -66,11 +66,11 @@ describe('SearchComponent', () => {
             searchComponent.submit("QUERY");
             expect(navigate).toHaveBeenCalledWith(["/Search", {query: "QUERY"}]);
           });
-        })
+         }))
       );
 
       it('performs the search',
-        injectAsync([TestComponentBuilder], (tcb) => {
+         async(inject([TestComponentBuilder], (tcb) => {
           return tcb.createAsync(SearchComponent).then((fixture) => {
             let searchComponent = fixture.debugElement.componentInstance;
             let search = spyOn(searchComponent, 'search');
@@ -78,13 +78,13 @@ describe('SearchComponent', () => {
             searchComponent.submit("QUERY");
             expect(search).toHaveBeenCalled();
           });
-        })
+         }))
       );
     });
 
     describe('testing the interaction', () => {
       it('navigates to the Search route',
-        injectAsync([TestComponentBuilder], (tcb) => {
+         async(inject([TestComponentBuilder], (tcb) => {
           let navigate = mockRouterProvider.mockRouter.spy('navigate');
 
           return tcb.createAsync(SearchComponent).then((fixture) => {
@@ -100,15 +100,15 @@ describe('SearchComponent', () => {
             button.click();
 
             expect(navigate).toHaveBeenCalledWith(["/Search", {query: "QUERY"}]);
-          })
-        })
+          });
+         }))
       );
     });
   });
 
   describe('search', () => {
     it('searches when a query is present',
-      injectAsync([TestComponentBuilder], (tcb) => {
+       async(inject([TestComponentBuilder], (tcb) => {
         return tcb.createAsync(SearchComponent).then((fixture) => {
           var searchComponent = fixture.debugElement.componentInstance;
           mockRouterProvider.setRouteParam('query', 'QUERY')
@@ -116,24 +116,24 @@ describe('SearchComponent', () => {
           searchComponent.search();
           expect(mockSpotifyService.searchTrackSpy).toHaveBeenCalledWith("QUERY")
         })
-      })
+       }))
     );
 
-    it(`doesn't search when a query is absent`,
-      injectAsync([TestComponentBuilder], (tcb) => {
+    it(`doesn\'t search when a query is absent`,
+       async(inject([TestComponentBuilder], (tcb) => {
         return tcb.createAsync(SearchComponent).then((fixture) => {
           var searchComponent = fixture.debugElement.componentInstance;
 
           searchComponent.search();
           expect(mockSpotifyService.searchTrackSpy).not.toHaveBeenCalled();
         });
-      })
+       }))
     );
   });
 
   describe('renderResults', () => {
     it('display a message when no results are found',
-      injectAsync([Router, TestComponentBuilder], (router, tcb) => {
+       async(inject([Router, TestComponentBuilder], (router, tcb) => {
         return tcb.createAsync(SearchComponent).then((fixture) => {
           mockSpotifyService.setResponse({tracks: {items: []}});
           mockRouterProvider.setRouteParam('query', 'QUERY');
@@ -152,12 +152,12 @@ describe('SearchComponent', () => {
 
           expect(compiled.innerText)
             .toContain("No tracks were found with the term 'QUERY'");
-        })
-      })
+        });
+       }))
     );
 
     it('display results',
-      injectAsync([Router, TestComponentBuilder], (router, tcb) => {
+       async(inject([Router, TestComponentBuilder], (router, tcb) => {
         return tcb.createAsync(SearchComponent).then((fixture) => {
           var searchComponent = fixture.debugElement.componentInstance;
           var response = {
@@ -187,7 +187,7 @@ describe('SearchComponent', () => {
           expect(links[1].innerText).toEqual('TRACK');
           expect(links[2].innerText).toEqual('ALBUM');
         })
-      })
+       }))
     );
   });
 });

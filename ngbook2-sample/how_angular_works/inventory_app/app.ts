@@ -9,9 +9,9 @@
 import {
   Component,
   EventEmitter
-} from 'angular2/core';
+} from '@angular/core';
 
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 
 /**
  * Provides a `Product` object
@@ -50,7 +50,7 @@ class ProductImage {
   inputs: ['product'],
   template: `
   <div class="product-department">
-    <span *ngFor="#name of product.department; #i=index">
+    <span *ngFor="let name of product.department; let i=index">
       <a href="#">{{ name }}</a>
       <span>{{i < (product.department.length-1) ? '>' : ''}}</span>
     </span>
@@ -114,7 +114,7 @@ class ProductRow {
   template: `
   <div class="ui items">
     <product-row 
-      *ngFor="#myProduct of productList" 
+      *ngFor="let myProduct of productList" 
       [product]="myProduct" 
       (click)='clicked(myProduct)'
       [class.selected]="isSelected(myProduct)">

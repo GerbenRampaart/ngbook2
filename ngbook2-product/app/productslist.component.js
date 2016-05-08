@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./productrow.component"], function(exports_1, context_1) {
+System.register(["@angular/core", "./productrow.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -41,7 +41,7 @@ System.register(["angular2/core", "./productrow.component"], function(exports_1,
                         directives: [productrow_component_1.ProductRowComponent],
                         inputs: ['productList'],
                         outputs: ['onProductSelected'],
-                        template: "\n        <div class=\"ui items\">\n            <product-row\n                *ngFor=\"#myProduct of productList\"\n                [product]=\"myProduct\"\n                (click)=\"clicked(myProduct)\"\n                [class.selected]=\"isSelected(myProduct)\">\n            </product-row>\n        </div>\n    "
+                        template: "\n        <div class=\"ui items\">\n            <product-row\n                *ngFor=\"let myProduct of productList\"\n                [product]=\"myProduct\"\n                (click)=\"clicked(myProduct)\"\n                [class.selected]=\"isSelected(myProduct)\">\n            </product-row>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ProductsListComponent);

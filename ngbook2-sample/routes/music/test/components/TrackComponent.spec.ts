@@ -6,8 +6,8 @@ import {
   injectAsync,
   afterEach,
   beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
+} from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
 
 import {MockRouterProvider} from "../mocks/routes";
 import {MockSpotifyService} from "../mocks/spotify";

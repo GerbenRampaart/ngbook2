@@ -1,9 +1,9 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import {
   FORM_DIRECTIVES,
   FormBuilder,
   ControlGroup
-} from 'angular2/common';
+} from '@angular/common';
 
 @Component({
   selector: 'demo-form-sku-builder',

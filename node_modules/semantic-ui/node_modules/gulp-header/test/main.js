@@ -17,7 +17,7 @@ describe('gulp-header', function() {
 
   function getFakeFile(fileContent){
     return new File({
-      path: './test/fixture/file.js',
+      path: './test/fixture/file.txt',
       cwd: './test/',
       base: './test/fixture/',
       contents: new Buffer(fileContent || '')
@@ -27,7 +27,7 @@ describe('gulp-header', function() {
   function getFakeFileReadStream(){
     return new File({
       contents: es.readArray(['Hello world']),
-      path: './test/fixture/file2.js'
+      path: './test/fixture/file2.txt'
     });
   }
 
@@ -45,8 +45,8 @@ describe('gulp-header', function() {
         should.exist(newFile.path);
         should.exist(newFile.relative);
         should.exist(newFile.contents);
-        newFile.path.should.equal('./test/fixture/file.js');
-        newFile.relative.should.equal('file.js');
+        newFile.path.should.equal('./test/fixture/file.txt');
+        newFile.relative.should.equal('file.txt');
         newFile.contents.toString('utf8').should.equal('Hello world');
         ++file_count;
       });
@@ -121,7 +121,7 @@ describe('gulp-header', function() {
         ''].join('\n'));
       stream.on('data', function (newFile) {
         should.exist(newFile.contents);
-        newFile.contents.toString('utf8').should.equal('file.js\n./test/fixture/file.js\nHello world');
+        newFile.contents.toString('utf8').should.equal('file.txt\n./test/fixture/file.txt\nHello world');
       });
       stream.once('end', done);
 
@@ -131,7 +131,7 @@ describe('gulp-header', function() {
 
     it('multiple files should pass through', function (done) {
       var headerText = 'use strict;',
-          stream = gulp.src('./test/fixture/*.js').pipe(header(headerText)),
+          stream = gulp.src('./test/fixture/*.txt').pipe(header(headerText)),
           files = [];
 
       stream.on('error', done);

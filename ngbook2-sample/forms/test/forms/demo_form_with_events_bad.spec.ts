@@ -1,20 +1,20 @@
 import {
   it,
   describe,
-  fdescribe,
+
   expect,
   inject,
-  injectAsync,
-  afterEach,
+
+
   fakeAsync,
   tick,
-  beforeEachProviders,
-  TestComponentBuilder,
-  ComponentFixture,
-} from 'angular2/testing';
-import { dispatchEvent } from 'angular2/testing_internal';
-import { By } from 'angular2/platform/browser';
-import { FormBuilder } from 'angular2/common';
+  beforeEachProviders
+
+} from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
+import { dispatchEvent } from '@angular/platform-browser/testing';
+import { By } from '@angular/platform-browser/src/dom/debug/by';
+import { FormBuilder } from '@angular/common';
 
 import { DemoFormWithEvents } from '../../app/ts/forms/demo_form_with_events';
 
@@ -31,11 +31,11 @@ describe('DemoFormWithEvents (bad)', () => {
 
     // replace the real console with our fake version
     _console = window.console;
-    window.console = fakeConsole;
+    (<any>window).console = fakeConsole;
   });
 
   // restores the real console
-  afterAll(() => window.console = _console);
+  afterAll(() => (<any>window).console = _console);
 
   beforeEachProviders(() => {
     return [FormBuilder];

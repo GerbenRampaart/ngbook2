@@ -9,17 +9,19 @@
 import {
   provide,
   Component,
-} from 'angular2/core';
-import { bootstrap } from 'angular2/platform/browser';
+} from '@angular/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 import {
-  APP_BASE_HREF,
   ROUTER_DIRECTIVES,
   ROUTER_PROVIDERS,
-  HashLocationStrategy,
-  LocationStrategy,
   RouteDefinition,
   Router
-} from 'angular2/router';
+} from '@angular/router-deprecated';
+import {
+  APP_BASE_HREF,
+  LocationStrategy,
+  HashLocationStrategy
+} from '@angular/common';
 import { IntroComponent } from './app/intro_component';
 import { StyleSampleApp } from './styling/styling';
 import { HostSampleApp } from './host/host';

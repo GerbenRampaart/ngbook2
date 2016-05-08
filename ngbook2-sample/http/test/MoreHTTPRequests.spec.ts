@@ -1,15 +1,15 @@
-import {provide} from 'angular2/core';
+import {provide} from '@angular/core';
 import {
   it,
   describe,
   expect,
   inject,
-  injectAsync,
+  async,
   afterEach,
   beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
-import {MockBackend} from 'angular2/http/testing';
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {MockBackend} from '@angular/http/testing';
 import {
   Http,
   ConnectionBackend,
@@ -17,7 +17,7 @@ import {
   Response,
   ResponseOptions,
   RequestMethod,
-} from 'angular2/http';
+} from '@angular/http';
 
 import { MoreHTTPRequests } from '../app/ts/components/MoreHTTPRequests';
 
@@ -33,7 +33,7 @@ beforeEachProviders(() => {
 
 describe('MoreHTTPRequests', () => {
   it('performs a POST',
-    injectAsync([TestComponentBuilder, MockBackend], (tcb, backend) => {
+     async(inject([TestComponentBuilder, MockBackend], (tcb, backend) => {
       return tcb.createAsync(MoreHTTPRequests).then((fixture) => {
         let comp = fixture.debugElement.componentInstance;
 
@@ -46,11 +46,11 @@ describe('MoreHTTPRequests', () => {
         comp.makePost();
         expect(comp.data).toEqual({'response': 'OK'});
       });
-    })
+     }))
   );
 
   it('performs a DELETE',
-    injectAsync([TestComponentBuilder, MockBackend], (tcb, backend) => {
+     async(inject([TestComponentBuilder, MockBackend], (tcb, backend) => {
       return tcb.createAsync(MoreHTTPRequests).then((fixture) => {
         let comp = fixture.debugElement.componentInstance;
 
@@ -63,11 +63,11 @@ describe('MoreHTTPRequests', () => {
         comp.makeDelete();
         expect(comp.data).toEqual({'response': 'OK'});
       });
-    })
+     }))
   );
 
   it('sends correct headers',
-    injectAsync([TestComponentBuilder, MockBackend], (tcb, backend) => {
+     async(inject([TestComponentBuilder, MockBackend], (tcb, backend) => {
       return tcb.createAsync(MoreHTTPRequests).then((fixture) => {
         let comp = fixture.debugElement.componentInstance;
 
@@ -81,6 +81,6 @@ describe('MoreHTTPRequests', () => {
         comp.makeHeaders();
         expect(comp.data).toEqual({'response': 'OK'});
       });
-    })
+     }))
   );
 });

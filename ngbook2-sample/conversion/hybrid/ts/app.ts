@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { UpgradeAdapter } from 'angular2/upgrade';
-import * as angular from 'angular2/src/upgrade/angular_js';
+import { UpgradeAdapter } from '@angular/upgrade';
+import * as angular from '@angular/upgrade/src/angular_js';
 import 'interestAppNg1'; // "bare import" for side-effects
 import { AddPinComponent } from './components/AddPinComponent';
 import { PinControlsComponent } from './components/PinControlsComponent';

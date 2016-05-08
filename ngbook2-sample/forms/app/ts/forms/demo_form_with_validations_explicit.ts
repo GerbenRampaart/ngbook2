@@ -1,5 +1,5 @@
 /* tslint:disable:no-string-literal */
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
@@ -7,7 +7,7 @@ import {
   ControlGroup,
   Validators,
   AbstractControl
-} from 'angular2/common';
+} from '@angular/common';
 
 @Component({
   selector: 'demo-form-with-validations-explicit',

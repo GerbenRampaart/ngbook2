@@ -1,9 +1,10 @@
 /*
  * Angular
  */
-import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouteParams, RouterLink, LocationStrategy} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {RouteParams, RouterLink} from '@angular/router-deprecated';
+import {LocationStrategy} from '@angular/common';
 
  /*
   * Services
@@ -24,7 +25,7 @@ import {SpotifyService} from 'services/SpotifyService';
 
     <h3>Tracks</h3>
     <ol>
-      <li *ngFor="#t of album.tracks.items">
+      <li *ngFor="let t of album.tracks.items">
         <a [routerLink]="['/Tracks', {id: t.id}]">
           {{ t.name }}
         </a>

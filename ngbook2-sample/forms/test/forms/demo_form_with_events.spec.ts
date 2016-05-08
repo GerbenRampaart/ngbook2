@@ -1,20 +1,20 @@
 import {
   it,
   describe,
-  fdescribe,
+
   expect,
   inject,
-  injectAsync,
-  afterEach,
+  async,
+
   fakeAsync,
   tick,
   beforeEachProviders,
-  TestComponentBuilder,
-  ComponentFixture,
-} from 'angular2/testing';
-import { dispatchEvent } from 'angular2/testing_internal';
-import { By } from 'angular2/platform/browser';
-import { FormBuilder } from 'angular2/common';
+
+} from '@angular/core/testing';
+import { TestComponentBuilder, ComponentFixture } from '@angular/compiler/testing';
+import { dispatchEvent } from '@angular/platform-browser/testing';
+import { By } from '@angular/platform-browser/src/dom/debug/by';
+import { FormBuilder } from '@angular/common';
 
 import { DemoFormWithEvents } from '../../app/ts/forms/demo_form_with_events';
 
@@ -31,17 +31,17 @@ describe('DemoFormWithEvents', () => {
 
     // replace the real console with our fake version
     _console = window.console;
-    window.console = fakeConsole;
+    (<any>window).console = fakeConsole;
   });
 
   // restores the real console
-  afterAll(() => window.console = _console);
+  afterAll(() => (<any>window).console = _console);
 
   beforeEachProviders(() => {
     return [FormBuilder];
   });
 
-  function createComponent(tcb: TestComponentBuilder): Promise<ComponentFixture> {
+  function createComponent(tcb: TestComponentBuilder): Promise<ComponentFixture<any>> {
     return tcb.createAsync(DemoFormWithEvents).then((fixture) => {
       el = fixture.debugElement.nativeElement;
       input = fixture.debugElement.query(By.css("input")).nativeElement;
@@ -52,7 +52,7 @@ describe('DemoFormWithEvents', () => {
     });
   }
 
-  it('displays errors with no sku', injectAsync([TestComponentBuilder], (tcb) => {
+  it('displays errors with no sku', async(inject([TestComponentBuilder], (tcb) => {
     return createComponent(tcb).then((fixture) => {
       input.value = '';
       dispatchEvent(input, 'input');
@@ -63,9 +63,9 @@ describe('DemoFormWithEvents', () => {
       expect(msgs[0]).toHaveText('SKU is invalid');
       expect(msgs[1]).toHaveText('SKU is required');
     });
-  }));
+  })));
 
-  it('displays no errors when sku has a value', injectAsync([TestComponentBuilder], (tcb) => {
+  it('displays no errors when sku has a value', async(inject([TestComponentBuilder], (tcb) => {
     return createComponent(tcb).then((fixture) => {
       input.value = 'XYZ';
       dispatchEvent(input, 'input');
@@ -74,7 +74,7 @@ describe('DemoFormWithEvents', () => {
       let msgs = el.querySelectorAll('.ui.error.message');
       expect(msgs.length).toEqual(0);
     });
-  }));
+  })));
 
   it('handles sku value changes', inject([TestComponentBuilder],
     fakeAsync((tcb) => {

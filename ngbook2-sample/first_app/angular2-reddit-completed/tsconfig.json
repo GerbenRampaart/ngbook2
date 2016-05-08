@@ -10,14 +10,15 @@
     "noImplicitAny": false
   },
   "files": [
-    "node_modules/angular2/ts/typings/node/node.d.ts",
-    "node_modules/angular2/typings/browser.d.ts",
     "app.ts",
     "intermediates/app-02.ts",
     "intermediates/app-03.ts",
-    "intermediates/app-04.ts"
+    "intermediates/app-04.ts",
+    "typings/browser.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "typings/main.d.ts",
+    "typings/main"
   ]
 }

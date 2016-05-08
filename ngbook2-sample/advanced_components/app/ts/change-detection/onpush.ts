@@ -3,7 +3,7 @@ import { Component,
   Input,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
-} from 'angular2/core';
+} from '@angular/core';
 
 
 class Profile {

@@ -1,16 +1,16 @@
 /*
  * Angular
  */
-import {provide, Component} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+import {provide, Component} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {
   ROUTER_DIRECTIVES,
   ROUTER_PROVIDERS,
-  HashLocationStrategy,
-  LocationStrategy,
+
   Router,
   RouteConfig,
-} from 'angular2/router';
+} from '@angular/router-deprecated';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 /*
  * Components

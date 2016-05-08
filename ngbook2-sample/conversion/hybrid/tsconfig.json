@@ -10,17 +10,13 @@
     "noImplicitAny": false
   },
   "files": [
-    "node_modules/angular2/ts/typings/node/node.d.ts",
-    "node_modules/angular2/typings/browser.d.ts",
-    "typings/tsd.d.ts",
     "ts/app.ts",
-    "js/app.d.ts"
+    "js/app.d.ts",
+    "typings/browser.d.ts"
   ],
-  "filesGlob": [
-     "./ts/**/*.ts",
-     "!./node_modules/**/*.ts"
-   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "typings/main.d.ts",
+    "typings/main"
   ]
 }

@@ -1,5 +1,5 @@
-import { Component } from 'angular2/core';
-import { bootstrap } from 'angular2/platform/browser';
+import { Component } from '@angular/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'ng-for-sample-app',
@@ -8,7 +8,7 @@ import { bootstrap } from 'angular2/platform/browser';
     Simple list of strings
   </h4>
 
-  <div class="ui list" *ngFor="#c of cities">
+  <div class="ui list" *ngFor="let c of cities">
     <div class="item">{{ c }}</div>
   </div>
 
@@ -24,7 +24,7 @@ import { bootstrap } from 'angular2/platform/browser';
         <th>City</th>
       </tr>
     </thead>
-    <tr *ngFor="#p of people">
+    <tr *ngFor="let p of people">
       <td>{{ p.name }}</td>
       <td>{{ p.age }}</td>
       <td>{{ p.city }}</td>
@@ -35,7 +35,7 @@ import { bootstrap } from 'angular2/platform/browser';
     Nested data
   </h4>
 
-  <div *ngFor="#item of peopleByCity">
+  <div *ngFor="let item of peopleByCity">
     <h2 class="ui header">{{ item.city }}</h2>
 
     <table class="ui celled table">
@@ -45,7 +45,7 @@ import { bootstrap } from 'angular2/platform/browser';
           <th>Age</th>
         </tr>
       </thead>
-      <tr *ngFor="#p of item.people">
+      <tr *ngFor="let p of item.people">
         <td>{{ p.name }}</td>
         <td>{{ p.age }}</td>
       </tr>
@@ -56,7 +56,7 @@ import { bootstrap } from 'angular2/platform/browser';
     List with index
   </h4>
 
-  <div class="ui list" *ngFor="#c of cities; #num = index">
+  <div class="ui list" *ngFor="let c of cities; let num = index">
     <div class="item">{{ num+1 }} - {{ c }}</div>
   </div>
   `

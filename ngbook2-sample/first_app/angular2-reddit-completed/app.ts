@@ -1,5 +1,5 @@
-import { bootstrap } from 'angular2/platform/browser';
-import { Component } from 'angular2/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { Component } from '@angular/core';
 
 class Article {
   title: string;
@@ -107,7 +107,7 @@ class ArticleComponent {
 
     <div class="ui grid posts">
       <reddit-article
-        *ngFor="#article of sortedArticles()"
+        *ngFor="let article of sortedArticles()"
         [article]="article">
       </reddit-article>
     </div>

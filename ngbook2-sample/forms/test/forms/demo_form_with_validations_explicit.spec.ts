@@ -1,22 +1,22 @@
 import {
   it,
   describe,
-  fdescribe,
+
   expect,
+
   inject,
-  injectAsync,
-  afterEach,
+  async,
   beforeEachProviders,
-  TestComponentBuilder,
-  ComponentFixture,
-} from 'angular2/testing';
+
+} from '@angular/core/testing';
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
-} from 'angular2/common';
-import { dispatchEvent } from 'angular2/testing_internal';
-import { By } from 'angular2/platform/browser';
-import { FormBuilder } from 'angular2/common';
+} from '@angular/common';
+import { TestComponentBuilder, ComponentFixture } from '@angular/compiler/testing';
+import { dispatchEvent } from '@angular/platform-browser/testing';
+import { By } from '@angular/platform-browser/src/dom/debug/by';
+import { FormBuilder } from '@angular/common';
 
 import { DemoFormWithValidationsExplicit } from '../../app/ts/forms/demo_form_with_validations_explicit';
 
@@ -25,7 +25,7 @@ describe('DemoFormWithValidationsExplicit', () => {
 
   beforeEachProviders(() => { return [FormBuilder]; });
 
-  function createComponent(tcb: TestComponentBuilder): Promise<ComponentFixture> {
+  function createComponent(tcb: TestComponentBuilder): Promise<ComponentFixture<any>> {
     return tcb.createAsync(DemoFormWithValidationsExplicit).then((fixture) => {
       el = fixture.debugElement.nativeElement;
       input = fixture.debugElement.query(By.css("input")).nativeElement;
@@ -36,7 +36,7 @@ describe('DemoFormWithValidationsExplicit', () => {
     });
   }
 
-  it('displays errors with no sku', injectAsync([TestComponentBuilder], (tcb) => {
+  it('displays errors with no sku', async(inject([TestComponentBuilder], (tcb) => {
     return createComponent(tcb).then((fixture) => {
       input.value = '';
       dispatchEvent(input, 'input');
@@ -46,9 +46,9 @@ describe('DemoFormWithValidationsExplicit', () => {
       expect(msgs[0]).toHaveText('SKU is invalid');
       expect(msgs[1]).toHaveText('SKU is required');
     });
-  }));
+  })));
 
-  it('displays no errors when sku has a value', injectAsync([TestComponentBuilder], (tcb) => {
+  it('displays no errors when sku has a value', async(inject([TestComponentBuilder], (tcb) => {
     return createComponent(tcb).then((fixture) => {
       input.value = 'ABC';
       dispatchEvent(input, 'input');
@@ -57,5 +57,5 @@ describe('DemoFormWithValidationsExplicit', () => {
       let msgs = el.querySelectorAll('.ui.error.message');
       expect(msgs.length).toEqual(0);
     });
-  }));
+  })));
 });

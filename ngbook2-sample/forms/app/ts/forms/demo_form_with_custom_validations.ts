@@ -1,5 +1,5 @@
 /* tslint:disable:no-string-literal */
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
@@ -8,7 +8,7 @@ import {
   Validators,
   AbstractControl,
   Control
-} from 'angular2/common';
+} from '@angular/common';
 
 /**
  * Our custom validator

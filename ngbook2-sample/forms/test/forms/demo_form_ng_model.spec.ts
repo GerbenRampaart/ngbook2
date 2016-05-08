@@ -1,22 +1,22 @@
 import {
   it,
   describe,
-  fdescribe,
+
   expect,
+
+  async,
   inject,
-  injectAsync,
-  afterEach,
-  beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
-import { FormBuilder } from 'angular2/common';
+  beforeEachProviders
+} from '@angular/core/testing';
+import { TestComponentBuilder } from '@angular/compiler/testing';
+import { FormBuilder } from '@angular/common';
 
 import { DemoFormNgModel } from '../../app/ts/forms/demo_form_ng_model';
 
 beforeEachProviders(() => { return [FormBuilder]; });
 
 describe('DemoFormNgModel', () => {
-  it('requires product name', injectAsync([TestComponentBuilder], (tcb) => {
+  it('requires product name', async(inject([TestComponentBuilder], (tcb) => {
     return tcb.createAsync(DemoFormNgModel).then((fixture) => {
       let comp = fixture.debugElement.componentInstance;
       let el = fixture.debugElement.nativeElement;
@@ -31,5 +31,5 @@ describe('DemoFormNgModel', () => {
       fixture.detectChanges();
       expect(el.querySelector('.ui.error.message')).toBeNull();
     });
-  }));
+  })));
 });

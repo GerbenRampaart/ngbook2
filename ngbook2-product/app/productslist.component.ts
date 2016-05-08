@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from "angular2/core";
+import { Component, EventEmitter } from "@angular/core";
 
 import { ProductRowComponent } from "./productrow.component";
 import { Product } from "./product";
@@ -11,7 +11,7 @@ import { Product } from "./product";
     template: `
         <div class="ui items">
             <product-row
-                *ngFor="#myProduct of productList"
+                *ngFor="let myProduct of productList"
                 [product]="myProduct"
                 (click)="clicked(myProduct)"
                 [class.selected]="isSelected(myProduct)">

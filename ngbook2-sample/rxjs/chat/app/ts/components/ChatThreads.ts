@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy
-} from 'angular2/core';
+} from '@angular/core';
 import {ThreadsService} from '../services/services';
 import {Observable} from 'rxjs';
 import {Thread} from '../models';
@@ -59,7 +59,7 @@ class ChatThread implements OnInit {
       <div class="conversation-wrap">
 
         <chat-thread
-             *ngFor="#thread of threads | async"
+             *ngFor="let thread of threads | async"
              [thread]="thread">
         </chat-thread>
 

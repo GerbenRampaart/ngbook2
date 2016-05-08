@@ -3,8 +3,8 @@
  */
 import {
   Component
-} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 
 /* 
  * We're using Webpack to load our CSS which is why we use `require` instead of

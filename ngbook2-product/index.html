@@ -4,46 +4,23 @@
   <head>
     <base href="/ngbook2-product/"/>
     <title>ng-book 2: Inventory App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>    
+
     <link rel="icon" type="image/png" href="resources/images/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" href="resources/images/favicon.ico" />
 
-    <!-- Stylesheet -->
     <link type="text/css" rel="stylesheet" href="/node_modules/semantic-ui/dist/semantic.css"/>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
     <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
-    <script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
-
-    <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="/node_modules/zone.js/dist/zone.js"></script>
+    <script src="/node_modules/reflect-metadata/Reflect.js"></script>
     <script src="/node_modules/systemjs/dist/system.src.js"></script>
-    <script src="/node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
-
-    <script src="/node_modules/angular2/bundles/router.dev.js"></script>
 
     <!-- 2. Configure SystemJS -->
+    <script src="/systemjs.config.js"></script>
     <script>
-      System.config({
-        "defaultJSExtensions": true,
-        "transpiler": "typescript",
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        } 
-      });
-      
-      System.paths = {
-        'angular2/*': '/node_modules/angular2/*',
-        'rxjs/*': '/node_modules/rxjs/*'
-      };
-      
-      System.import('app/main')
-            .then(null, console.error.bind(console));
+      System.import('app').catch(function(err){ console.error(err);  });
     </script>
   </head>
 

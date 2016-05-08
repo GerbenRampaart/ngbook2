@@ -3,8 +3,8 @@ import {
   OnInit,
   ElementRef,
   ChangeDetectionStrategy
-} from 'angular2/core';
-import {FORM_DIRECTIVES} from 'angular2/common';
+} from '@angular/core';
+import {FORM_DIRECTIVES} from '@angular/common';
 import {
   MessagesService,
   ThreadsService,
@@ -86,7 +86,7 @@ export class ChatMessage implements OnInit {
 
             <div class="panel-body msg-container-base">
               <chat-message
-                   *ngFor="#message of messages | async"
+                   *ngFor="let message of messages | async"
                    [message]="message">
               </chat-message>
             </div>

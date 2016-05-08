@@ -2,9 +2,10 @@
  * Angular
  */
 
-import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouteParams, LocationStrategy} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {RouteParams} from '@angular/router-deprecated';
+import {LocationStrategy} from '@angular/common';
 
 /*
  * Services

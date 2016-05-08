@@ -1,11 +1,11 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import {
   CORE_DIRECTIVES,
   FORM_DIRECTIVES,
   FormBuilder,
   ControlGroup,
   Validators
-} from 'angular2/common';
+} from '@angular/common';
 
 @Component({
   selector: 'demo-form-with-validations-shorthand',

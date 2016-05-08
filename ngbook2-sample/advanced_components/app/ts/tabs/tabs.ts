@@ -7,7 +7,7 @@ import {
   ContentChildren,
   AfterContentInit,
   Input
-} from 'angular2/core';
+} from '@angular/core';
 
 
 @Component({
@@ -32,7 +32,7 @@ class Tab {
   selector: 'tabset',
   template: `
   <div class="ui top attached tabular menu">
-    <a *ngFor="#tab of tabs"
+    <a *ngFor="let tab of tabs"
        class="item"
        [class.active]="tab.active"
        (click)="setActive(tab)">
@@ -72,7 +72,7 @@ class Tabset implements AfterContentInit {
       dignissimos quasi at molestiae sapiente natus, neque voluptatum
       ad consequuntur cupiditate nemo sunt.
     </tab>
-    <tab *ngFor="#tab of tabs" [title]="tab.title">
+    <tab *ngFor="let tab of tabs" [title]="tab.title">
       {{ tab.content }}
     </tab>
   </tabset>

@@ -5,7 +5,7 @@ gulp-header is a [Gulp](https://github.com/gulpjs/gulp) extension to add a heade
 ## Install
 
 ```javascript
-npm install --save gulp-header
+npm install --save-dev gulp-header
 ```
 
 ## Usage

@@ -1,19 +1,19 @@
 import {
   it,
   describe,
-  fdescribe,
+
   expect,
   inject,
-  injectAsync,
+
   fakeAsync,
   tick,
-  afterEach,
-  beforeEachProviders,
-  TestComponentBuilder,
-  ComponentFixture,
-} from 'angular2/testing';
-import { dispatchEvent } from 'angular2/testing_internal';
-import { By } from 'angular2/platform/browser';
+
+
+
+} from '@angular/core/testing';
+import { TestComponentBuilder, ComponentFixture } from '@angular/compiler/testing';
+import { dispatchEvent } from '@angular/platform-browser/testing';
+import { By } from '@angular/platform-browser/src/dom/debug/by';
 
 import { DemoFormSku } from '../../app/ts/forms/demo_form_sku';
 
@@ -30,13 +30,13 @@ describe('DemoFormSku', () => {
 
     // replace the real console with our fake version
     _console = window.console;
-    window.console = fakeConsole;
+    (<any>window).console = fakeConsole;
   });
 
   // restores the real console
-  afterAll(() => window.console = _console);
+  afterAll(() => (<any>window).console = _console);
 
-  function createComponent(tcb: TestComponentBuilder): Promise<ComponentFixture> {
+  function createComponent(tcb: TestComponentBuilder): Promise<ComponentFixture<any>> {
     return tcb.createAsync(DemoFormSku).then((fixture) => {
       el = fixture.debugElement.nativeElement;
       input = fixture.debugElement.query(By.css("input")).nativeElement;

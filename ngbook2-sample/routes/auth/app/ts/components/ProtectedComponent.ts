@@ -1,8 +1,8 @@
 /*
  * Angular
  */
-import {Component, Injector} from 'angular2/core';
-import {CanActivate} from 'angular2/router';
+import {Component, ReflectiveInjector} from '@angular/core';
+import {CanActivate} from '@angular/router-deprecated';
 
 /*
  * Services
@@ -15,7 +15,7 @@ import {AuthService} from 'services/AuthService';
 })
 @CanActivate(
   (nextInstr: any, currInstr: any) => {
-    let injector: any = Injector.resolveAndCreate([AuthService]);
+    let injector: any = ReflectiveInjector.resolveAndCreate([AuthService]);
     let authService: AuthService = injector.get(AuthService);
     return authService.isLogged();
   }

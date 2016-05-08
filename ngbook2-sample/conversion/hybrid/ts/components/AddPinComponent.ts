@@ -4,7 +4,7 @@
 import {
   Component,
   Inject
-} from 'angular2/core';
+} from '@angular/core';
 import { Pin, PinsService } from 'interestAppNg1';
 import { IStateService } from 'angular-ui-router';
 

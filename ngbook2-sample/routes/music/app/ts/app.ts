@@ -4,19 +4,19 @@
 import {
   Component,
   provide
-} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
-import {HTTP_PROVIDERS} from 'angular2/http';
+} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
+import {HTTP_PROVIDERS} from '@angular/http';
 import {
-  APP_BASE_HREF,
+
   ROUTER_DIRECTIVES,
   ROUTER_PROVIDERS,
   ROUTER_PRIMARY_COMPONENT,
-  HashLocationStrategy,
-  LocationStrategy,
+
   Router,
   RouteConfig,
-} from 'angular2/router';
+} from '@angular/router-deprecated';
+import {LocationStrategy, HashLocationStrategy, APP_BASE_HREF} from '@angular/common';
 
 /*
  * Components

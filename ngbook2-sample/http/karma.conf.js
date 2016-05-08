@@ -39,6 +39,7 @@ module.exports = function(config) {
       },
       module: {
         loaders: [
+          { test: /\.(png|jpg|gif)$/,   loader: "url-loader?limit=50000&name=[path][name].[ext]" },
           { test: /\.ts$/, loader: 'ts-loader', exclude: [/node_modules/]}
         ]
       },

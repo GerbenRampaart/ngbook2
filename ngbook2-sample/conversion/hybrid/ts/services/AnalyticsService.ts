@@ -1,4 +1,4 @@
-import {Injectable, bind} from 'angular2/core';
+import {Injectable, bind} from '@angular/core';
 
 /**
  * Analytics Service records metrics about what the user is doing

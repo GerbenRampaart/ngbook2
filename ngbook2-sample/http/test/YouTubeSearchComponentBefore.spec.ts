@@ -1,4 +1,4 @@
-import {provide} from 'angular2/core';
+import {provide} from '@angular/core';
 import {
   it,
   describe,
@@ -7,10 +7,10 @@ import {
   fakeAsync,
   tick,
   afterEach,
-  beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
-import {MockBackend} from 'angular2/http/testing';
+  beforeEachProviders
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {MockBackend} from '@angular/http/testing';
 import {
   Http,
   ConnectionBackend,
@@ -18,7 +18,7 @@ import {
   Response,
   ResponseOptions,
   RequestMethod,
-} from 'angular2/http';
+} from '@angular/http';
 
 import {
   YOUTUBE_API_KEY,

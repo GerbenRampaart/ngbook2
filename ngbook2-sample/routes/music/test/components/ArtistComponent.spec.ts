@@ -3,11 +3,11 @@ import {
   describe,
   expect,
   inject,
-  injectAsync,
+  async,
   afterEach,
   beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
 
 import {MockRouterProvider} from "../mocks/routes";
 import {MockSpotifyService} from "../mocks/spotify";
@@ -29,7 +29,7 @@ describe("ArtistComponent", () => {
   });
 
   describe("initialization", () => {
-    it("retrieves the artist", injectAsync([TestComponentBuilder], (tcb) => {
+    it("retrieves the artist", async(inject([TestComponentBuilder], (tcb) => {
       // makes the RouteParams return 2 as the artist id
       mockRouterProvider.setRouteParam('id', 2);
 
@@ -37,11 +37,11 @@ describe("ArtistComponent", () => {
         fixture.detectChanges();
         expect(mockSpotifyService.getArtistSpy).toHaveBeenCalledWith(2);
       });
-    }));
+    })));
   });
 
   describe('back', () => {
-    it('returns to the previous location', injectAsync([TestComponentBuilder], (tcb) => {
+    it('returns to the previous location', async(inject([TestComponentBuilder], (tcb) => {
       return tcb.createAsync(ArtistComponent).then((fixture) => {
         let artistComponent = fixture.debugElement.componentInstance;
         let backSpy = mockRouterProvider.mockLocationStrategy.spy('back');
@@ -49,11 +49,11 @@ describe("ArtistComponent", () => {
         artistComponent.back();
         expect(backSpy).toHaveBeenCalled();
       });
-    }));
+    })));
   });
 
   describe('renderArtist', () => {
-    it('renders artist info', injectAsync([TestComponentBuilder], (tcb) => {
+    it('renders artist info', async(inject([TestComponentBuilder], (tcb) => {
       return tcb.createAsync(ArtistComponent).then((fixture) => {
         let artistComponent = fixture.debugElement.componentInstance;
         let artist = {name: 'ARTIST NAME', images: [{url: 'IMAGE_1'}]};
@@ -65,6 +65,6 @@ describe("ArtistComponent", () => {
         expect(compiled.querySelector('h1')).toHaveText('ARTIST NAME');
         expect(compiled.querySelector('img').src).toContain('IMAGE_1');
       });
-    }));
+    })));
   });
 });

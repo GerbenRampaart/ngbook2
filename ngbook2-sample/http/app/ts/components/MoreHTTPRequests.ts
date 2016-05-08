@@ -1,14 +1,14 @@
 /*
  * Angular
  */
-import { Component } from 'angular2/core';
-import { JsonPipe, CORE_DIRECTIVES } from 'angular2/common';
+import { Component } from '@angular/core';
+import { JsonPipe, CORE_DIRECTIVES } from '@angular/common';
 import {
   Http,
   Response,
   RequestOptions,
   Headers
-} from 'angular2/http';
+} from '@angular/http';
 
 @Component({
   selector: 'more-http',

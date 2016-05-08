@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from 'angular2/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 let externalCSSUrl: string = require('file-loader!./external.css'); // webpack gives a URL
 
 @Component({

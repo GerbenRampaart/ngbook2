@@ -1,15 +1,15 @@
-import {provide} from "angular2/core";
+import {provide} from '@angular/core';
 import {
-  ROUTER_PROVIDERS,
-  Location,
-  LocationStrategy,
-  Instruction,
+
+
+
   ComponentInstruction,
   Router,
   RouteParams
-} from "angular2/router";
-import {ResolvedInstruction} from 'angular2/src/router/instruction';
-import {SpyObject} from 'angular2/testing_internal';
+} from '@angular/router-deprecated';
+import {Location, LocationStrategy} from '@angular/common';
+import {ResolvedInstruction} from '@angular/router-deprecated/src/instruction';
+import {SpyObject} from './helper';
 
 
 export class MockRouteParams extends SpyObject {
@@ -25,11 +25,14 @@ export class MockRouteParams extends SpyObject {
     return this.ROUTE_PARAMS[key];
   }
 }
+
 export class MockRouter extends SpyObject {
   constructor() { super(Router); }
   isRouteActive(s) { return true; }
   generate(s) {
-    return new ResolvedInstruction(new ComponentInstruction('detail', [], null, null, true, '0'), null, {});
+    let klass: any = ComponentInstruction; // hack b/c ComponentInstruction constructor typing isn't exposed 
+    let instruction: ComponentInstruction = new klass('detail', [], null, null, true, '0', null, 'Detail');
+    return new ResolvedInstruction(instruction, null, {});
   }
 }
 export class MockLocationStrategy extends SpyObject {

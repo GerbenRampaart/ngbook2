@@ -8,11 +8,11 @@
 import {
   Component,
   Input
-} from 'angular2/core';
+} from '@angular/core';
 import {
   ROUTER_DIRECTIVES,
   Router
-} from 'angular2/router';
+} from '@angular/router-deprecated';
 import { ExampleDef } from './example';
 
 /*
@@ -65,7 +65,7 @@ class SidebarItemComponent {
 <div class="ui vertical pointing menu">
   <sidebar-item 
     [item]="item"
-    *ngFor="#item of items">
+    *ngFor="let item of items">
     </sidebar-item>
 </div>
   `

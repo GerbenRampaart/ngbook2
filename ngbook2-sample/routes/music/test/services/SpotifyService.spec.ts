@@ -7,16 +7,16 @@ import {
   afterEach,
   beforeEachProviders,
   tick,
-} from 'angular2/testing';
-import {MockBackend} from 'angular2/http/testing';
-import {provide} from 'angular2/core';
+} from '@angular/core/testing';
+import {MockBackend} from '@angular/http/testing';
+import {provide} from '@angular/core';
 import {
   Http,
   ConnectionBackend,
   BaseRequestOptions,
   Response,
   ResponseOptions
-} from 'angular2/http';
+} from '@angular/http';
 
 import {SpotifyService} from '../../app/ts/services/SpotifyService';
 

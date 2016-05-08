@@ -15,7 +15,7 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-} from 'angular2/core';
+} from '@angular/core';
 
 
 @Component({
@@ -152,7 +152,7 @@ class DoCheckItem implements DoCheck {
   directives: [DoCheckItem],
   template: `
   <do-check-item [comment]="comment"
-    *ngFor="#comment of comments" (onRemove)="removeComment($event)">
+    *ngFor="let comment of comments" (onRemove)="removeComment($event)">
   </do-check-item>
 
   <button class="ui primary button" (click)="addComment()">

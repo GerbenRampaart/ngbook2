@@ -1,4 +1,4 @@
-import { Component, Directive, ElementRef } from 'angular2/core';
+import { Component, Directive, ElementRef } from '@angular/core';
 
 
 @Component({

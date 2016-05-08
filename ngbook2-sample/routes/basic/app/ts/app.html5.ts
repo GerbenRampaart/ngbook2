@@ -1,14 +1,14 @@
 /*
  * Angular
  */
-import {Component} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {
   ROUTER_DIRECTIVES,
   ROUTER_PROVIDERS,
   Router,
   RouteConfig,
-} from 'angular2/router';
+} from '@angular/router-deprecated';
 
 /*
  * Components

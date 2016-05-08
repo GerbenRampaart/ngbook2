@@ -12,7 +12,7 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-} from 'angular2/core';
+} from '@angular/core';
 
 
 @Component({

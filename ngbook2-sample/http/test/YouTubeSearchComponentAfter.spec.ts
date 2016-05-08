@@ -1,5 +1,5 @@
-/// <reference path="../typings/karma-read-json.d.ts" />
-import {provide} from 'angular2/core';
+/// <reference path="./typings/karma-read-json.d.ts" />
+import {provide, NgZone} from '@angular/core';
 import {
   it,
   describe,
@@ -7,11 +7,12 @@ import {
   inject,
   fakeAsync,
   tick,
-  afterEach,
-  beforeEachProviders,
-  TestComponentBuilder,
-} from 'angular2/testing';
-import {MockBackend} from 'angular2/http/testing';
+  async,
+  beforeEach,
+  beforeEachProviders
+} from '@angular/core/testing';
+import {TestComponentBuilder} from '@angular/compiler/testing';
+import {MockBackend} from '@angular/http/testing';
 import {
   Http,
   ConnectionBackend,
@@ -19,13 +20,28 @@ import {
   Response,
   ResponseOptions,
   RequestMethod,
-} from 'angular2/http';
+} from '@angular/http';
 
 import {
   YOUTUBE_API_KEY,
   YOUTUBE_API_URL,
   YouTubeService
 } from '../app/ts/components/YouTubeSearchComponent';
+
+const response = {
+  "items": [
+    {
+      "id": { "videoId": "VIDEO_ID" },
+      "snippet": {
+        "title": "TITLE",
+        "description": "DESCRIPTION",
+        "thumbnails": {
+          "high": { "url": "THUMBNAIL_URL" }
+        }
+      }
+    }
+  ]
+};
 
 describe('MoreHTTPRequests (after)', () => {
   beforeEachProviders(() => {
@@ -63,9 +79,6 @@ describe('MoreHTTPRequests (after)', () => {
         })
       )
     }
-
-    // reads the YouTube response fixture
-    let response = readJSON('test/fixture/youtube-response.json');
 
     it('parses YouTube video id', search('hey', response, (req, res) => {
       let video = res[0];

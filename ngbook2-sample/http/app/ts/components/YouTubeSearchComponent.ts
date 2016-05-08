@@ -10,8 +10,8 @@ import {
   ElementRef,
   EventEmitter,
   Inject
-} from 'angular2/core';
-import { Http, Response } from 'angular2/http';
+} from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
 /*
@@ -179,7 +179,7 @@ export class SearchResultComponent {
 
       <div class="row">
         <search-result
-          *ngFor="#result of results"
+          *ngFor="let result of results"
           [result]="result">
         </search-result>
       </div>

@@ -1,14 +1,14 @@
 import { Component,
   Directive,
-  Input,
-  ChangeDetectorRef,
-  ViewRef,
+
+
+
   ViewContainerRef,
   TemplateRef,
-  DoCheck,
-  IterableDiffers,
-  IterableDiffer,
-} from 'angular2/core';
+
+
+
+} from '@angular/core';
 
 
 @Directive({
@@ -17,7 +17,7 @@ import { Component,
 })
 class NgBookIf {
   constructor(private viewContainer: ViewContainerRef,
-              private template: TemplateRef) {}
+              private template: TemplateRef<any>) {}
 
   set ngBookIf(condition) {
     if (condition) {

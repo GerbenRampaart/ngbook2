@@ -8,39 +8,22 @@
         <link rel="icon" type="image/png" href="resources/images/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" href="resources/images/favicon.ico" />
 
-        <script src="/node_modules/systemjs/dist/system.src.js"></script>
-        <script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
-        <script src="/node_modules/es6-shim/es6-shim.js"></script>
-        <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-        <script src="/node_modules/rxjs/bundles/Rx.js"></script>
-
         <link type="text/css" rel="stylesheet" href="/node_modules/semantic-ui/dist/semantic.css"/>
-        <link type="text/css" rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="styles.css">
+
+        <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
+        <script src="/node_modules/zone.js/dist/zone.js"></script>
+        <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="/node_modules/systemjs/dist/system.src.js"></script>
+
+        <!-- 2. Configure SystemJS -->
+        <script src="/systemjs.config.js"></script>
+        <script>
+            System.import('app').catch(function(err){ console.error(err);  });
+        </script>
 
     </head>
     <body>
-
-        <script type="text/javascript">
-            System.config({
-                "defaultJSExtensions": true,
-                "transpiler": "typescript",
-                packages: {        
-                    app: {
-                        format: 'register',
-                        defaultExtension: 'js'
-                    }
-                } 
-            });
-            
-            System.paths = {
-                'angular2/*': '/node_modules/angular2/*',
-                'rxjs/*': '/node_modules/rxjs/*'
-            };
-            
-            System.import('app/appcomponent')
-                    .then(null, console.error.bind(console));
-        </script>
-
 
         <!-- Menu Bar -->
         <div class="ui menu">

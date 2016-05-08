@@ -2,8 +2,8 @@
  * This file shows the intermediate components in the hello-world app.
  */
 
-import { bootstrap } from "angular2/platform/browser";
-import { Component } from "angular2/core";
+import { bootstrap } from "@angular/platform-browser-dynamic";
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'hello-world',
@@ -21,7 +21,7 @@ class HelloWorldWithName {
   selector: 'hello-world',
   template: `
   <ul>
-    <li *ngFor="#name of names">Hello {{ name }}</li>
+    <li *ngFor="let name of names">Hello {{ name }}</li>
   </ul>
 `
 })

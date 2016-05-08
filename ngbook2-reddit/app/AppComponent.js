@@ -1,4 +1,4 @@
-System.register(["angular2/platform/browser", "angular2/core", "./ArticleComponent", "./ArticleModel"], function(exports_1, context_1) {
+System.register(["@angular/platform-browser-dynamic", "@angular/core", "./ArticleComponent", "./ArticleModel"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,12 @@ System.register(["angular2/platform/browser", "angular2/core", "./ArticleCompone
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var browser_1, core_1, ArticleComponent_1, ArticleModel_1;
+    var platform_browser_dynamic_1, core_1, ArticleComponent_1, ArticleModel_1;
     var AppComponent;
     return {
         setters:[
-            function (browser_1_1) {
-                browser_1 = browser_1_1;
+            function (platform_browser_dynamic_1_1) {
+                platform_browser_dynamic_1 = platform_browser_dynamic_1_1;
             },
             function (core_1_1) {
                 core_1 = core_1_1;
@@ -48,13 +48,14 @@ System.register(["angular2/platform/browser", "angular2/core", "./ArticleCompone
                     core_1.Component({
                         selector: 'reddit',
                         directives: [ArticleComponent_1.ArticleComponent],
-                        template: "\n        <form class=\"ui large form segment\">\n            <h3 class=\"header\">Add a link</h3>\n            <div class=\"field\">\n                <label for=\"title\">Title:</label>\n                <input name=\"title\" #newtitle />\n            </div>\n            <div class=\"field\">\n                <label for=\"link\">Link:</label>\n                <input name=\"link\" #newlink />\n            </div>\n            <button (click)=\"addArticle(newtitle, newlink)\"\n                class=\"ui positive right bloated button\">\n                Submit link\n            </button>\n        </form>\n        \n        <div class=\"ui grid posts\">\n            <reddit-article \n                *ngFor=\"#article of sortedArticles()\"\n                [article]=\"article\">\n            </reddit-article>\n        </div>\n    "
+                        template: "\n        <form class=\"ui large form segment\">\n            <h3 class=\"header\">Add a link</h3>\n            <div class=\"field\">\n                <label for=\"title\">Title:</label>\n                <input name=\"title\" #newtitle />\n            </div>\n            <div class=\"field\">\n                <label for=\"link\">Link:</label>\n                <input name=\"link\" #newlink />\n            </div>\n            <button (click)=\"addArticle(newtitle, newlink)\"\n                class=\"ui positive right bloated button\">\n                Submit link\n            </button>\n        </form>\n        \n        <div class=\"ui grid posts\">\n            <reddit-article \n                *ngFor=\"let article of sortedArticles()\"\n                [article]=\"article\">\n            </reddit-article>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             }());
-            browser_1.bootstrap(AppComponent);
+            exports_1("AppComponent", AppComponent);
+            platform_browser_dynamic_1.bootstrap(AppComponent);
         }
     }
 });
