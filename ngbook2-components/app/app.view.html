@@ -42,3 +42,12 @@
 <button class="ui primary button" (click)="apply(colorinput.value, fontinput.value)">
     Apply settings
 </button>
+
+<style>
+    .bordered {
+        border: 1px dashed black;
+        background-color: #eee;
+    }
+</style>
+
+<div [ngClass]="{ bordered: visible }">bordered or not</div>
