@@ -1,4 +1,4 @@
-System.register(["@angular/core"], function(exports_1, context_1) {
+System.register(["@angular/core", "@angular/common"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(["@angular/core"], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, common_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -23,8 +26,9 @@ System.register(["@angular/core"], function(exports_1, context_1) {
                 }
                 AppComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: "app"
+                        selector: 'demo-form-sku',
+                        directives: [common_1.FORM_DIRECTIVES],
+                        template: "\n        <div class=\"ui raised segment\">\n            <h2 class=\"ui header\">Demo Form: SKU</h2>\n            <form #f=\"ngForm\"\n                    (ngSubmit)=\"onSubmit(f.value)\"\n                    class=\"ui form\">\n            \n                <div class=\"field\">\n                    <label for=\"skuInput\">SKU</label>\n                    <input type=\"text\" id=\"skuInput\" placeholder=\"SKU\" ngControl=\"sku\"/>\n                </div>\n                \n                <button type=\"submit\" class=\"ui button\">Submit</button>\n            \n            </form>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
